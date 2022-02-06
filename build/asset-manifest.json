@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d6bba720.css",
+    "main.js": "/static/js/main.85b9fe0c.js",
+    "static/js/787.4ef7427d.chunk.js": "/static/js/787.4ef7427d.chunk.js",
+    "static/media/trirong-all-400-normal.woff": "/static/media/trirong-all-400-normal.6440665395a4fb834f03.woff",
+    "static/media/raleway-all-400-normal.woff": "/static/media/raleway-all-400-normal.8745d609142c140d7bdc.woff",
+    "service-worker.js": "/service-worker.js",
+    "static/media/raleway-latin-400-normal.woff2": "/static/media/raleway-latin-400-normal.d0033942a11996c40380.woff2",
+    "static/media/trirong-latin-ext-400-normal.woff2": "/static/media/trirong-latin-ext-400-normal.46002163de281c5e9b88.woff2",
+    "static/media/trirong-latin-400-normal.woff2": "/static/media/trirong-latin-400-normal.c2c47e4780ee8237b648.woff2",
+    "static/media/placeholder-image1.jpeg": "/static/media/placeholder-image1.7d7aedcba7ed5536960a.jpeg",
+    "static/media/trirong-thai-400-normal.woff2": "/static/media/trirong-thai-400-normal.f16cb3c1a12788751d10.woff2",
+    "static/media/raleway-latin-ext-400-normal.woff2": "/static/media/raleway-latin-ext-400-normal.0d87da54ef6ba3feba64.woff2",
+    "static/media/raleway-cyrillic-ext-400-normal.woff2": "/static/media/raleway-cyrillic-ext-400-normal.fb4e05231f89be643737.woff2",
+    "static/media/raleway-cyrillic-400-normal.woff2": "/static/media/raleway-cyrillic-400-normal.cb4f2846a9e6286936a1.woff2",
+    "static/media/trirong-vietnamese-400-normal.woff2": "/static/media/trirong-vietnamese-400-normal.fc57841e8c8a5edc1ea3.woff2",
+    "static/media/raleway-vietnamese-400-normal.woff2": "/static/media/raleway-vietnamese-400-normal.8efa7e0a2615cd431d28.woff2",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.d6bba720.css.map": "/static/css/main.d6bba720.css.map",
+    "main.85b9fe0c.js.map": "/static/js/main.85b9fe0c.js.map",
+    "787.4ef7427d.chunk.js.map": "/static/js/787.4ef7427d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6bba720.css",
+    "static/js/main.85b9fe0c.js"
+  ]
+}

@@ -63,6 +63,7 @@ class SliceAuth extends SliceRedux {
               state.user = action.payload as Account;
               localStorage.setItem("user", JSON.stringify(action.payload));
               state.status = StatusType.IDLE;
+              console.timeEnd("slice - asyncLoginThunk");
             }
           })
           .addCase(asyncLoginThunk.pending, (state) => {
@@ -75,12 +76,14 @@ class SliceAuth extends SliceRedux {
             if (state.status === StatusType.LOADING) {
               state.status = StatusType.FAILED;
               state.error = action.payload;
+              console.timeEnd("slice - asyncLoginThunk");
             }
           })
           .addCase(asyncVerifyTokenThunk.fulfilled, (state, action) => {
             if (state.status === StatusType.LOADING) {
               state.error = undefined;
               state.status = StatusType.IDLE;
+              console.timeEnd("slice - asyncVerifyTokenThunk");
             }
           })
           .addCase(asyncVerifyTokenThunk.pending, (state) => {
@@ -95,6 +98,7 @@ class SliceAuth extends SliceRedux {
               localStorage.removeItem("user");
               state.error = action.payload;
               state.status = StatusType.FAILED;
+              console.timeEnd("slice - asyncVerifyTokenThunk");
             }
           });
       },
@@ -105,6 +109,7 @@ class SliceAuth extends SliceRedux {
 export const asyncLoginThunk = createAsyncThunk(
   "auth/asyncLoginThunkStatus",
   async (credential: Credential, thunkAPI): Promise<Account | unknown> => {
+    console.time("slice - asyncLoginThunk");
     try {
       const response = await AuthAPI.loginAPI(credential);
       return response.data.data as Account;
@@ -118,6 +123,7 @@ export const asyncLoginThunk = createAsyncThunk(
 export const asyncVerifyTokenThunk = createAsyncThunk(
   "auth/asyncVerifyTokenThunkStatus",
   async (_, thunkAPI): Promise<void | unknown> => {
+    console.time("slice - asyncVerifyTokenThunk");
     try {
       const { _id, token } = (thunkAPI.getState() as RootState).authState.user;
       const response = await AuthAPI.verifyTokenAPI(_id, token);
