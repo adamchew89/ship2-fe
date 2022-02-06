@@ -36,6 +36,11 @@ class SliceAccount extends SliceRedux {
             state.error = undefined;
           }
         },
+        clearAccounts(state) {
+          if (state.accounts) {
+            state.accounts = undefined;
+          }
+        },
       },
       extraReducers: (builder) => {
         builder
@@ -176,11 +181,14 @@ export const asyncCreateAccountThunk = createAsyncThunk(
 
 export const asyncUpdateAccountThunk = createAsyncThunk(
   "account/asyncUpdateAccountThunk",
-  async (account: Account, thunkAPI): Promise<Account | unknown> => {
+  async (
+    { _id, account }: { _id: number; account: Account },
+    thunkAPI
+  ): Promise<Account | unknown> => {
     try {
       const response = await AccountAPI.putAccountByIdAPI(
         (thunkAPI.getState() as RootState).authState.user?.token,
-        (thunkAPI.getState() as RootState).authState.user?._id,
+        _id,
         account
       );
       return response.data.data as Account;

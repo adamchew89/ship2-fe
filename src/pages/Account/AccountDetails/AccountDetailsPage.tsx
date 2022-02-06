@@ -112,7 +112,9 @@ function AccountDetailsPage() {
     };
     let response;
     if (params.id) {
-      response = await dispatch(asyncUpdateAccountThunk(formData));
+      response = await dispatch(
+        asyncUpdateAccountThunk({ _id: +params.id, account: formData })
+      );
     } else {
       response = await dispatch(asyncCreateAccountThunk(formData));
     }

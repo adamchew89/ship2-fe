@@ -184,7 +184,10 @@ describe("[SliceAccount]", () => {
 
         it("should trigger API call and fulfilled", async () => {
           const meta = await store.dispatch(
-            SliceAccount.asyncUpdateAccountThunk(FixtureAccounts.accounts[0])
+            SliceAccount.asyncUpdateAccountThunk({
+              _id: FixtureAccounts.accounts[0]._id!,
+              account: FixtureAccounts.accounts[0],
+            })
           );
           expect(mockGetAccountsAPI).toHaveBeenCalledTimes(1);
           expect(meta.type).toEqual(expect.stringMatching(/\/fulfilled/));
@@ -195,7 +198,10 @@ describe("[SliceAccount]", () => {
             Promise.reject(new Error())
           );
           const meta = await store.dispatch(
-            SliceAccount.asyncUpdateAccountThunk(FixtureAccounts.accounts[0])
+            SliceAccount.asyncUpdateAccountThunk({
+              _id: FixtureAccounts.accounts[0]._id!,
+              account: FixtureAccounts.accounts[0],
+            })
           );
           expect(mockGetAccountsAPI).toHaveBeenCalledTimes(1);
           expect(meta.type).toEqual(expect.stringMatching(/\/rejected/));

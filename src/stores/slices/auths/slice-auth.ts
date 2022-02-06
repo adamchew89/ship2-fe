@@ -44,11 +44,6 @@ class SliceAuth extends SliceRedux {
             state.user = undefined;
           }
         },
-        clearAccounts(state) {
-          if (state.accounts) {
-            state.accounts = undefined;
-          }
-        },
         clearErrors(state) {
           if (state.error) {
             state.error = undefined;
