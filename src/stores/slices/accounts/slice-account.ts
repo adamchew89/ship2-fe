@@ -91,6 +91,7 @@ class SliceAccount extends SliceRedux {
               state.error = undefined;
               state.account = action.payload as Account;
               state.status = StatusType.IDLE;
+              console.timeEnd("slice - asyncCreateAccountThunk");
             }
           })
           .addCase(asyncCreateAccountThunk.pending, (state) => {
@@ -103,6 +104,7 @@ class SliceAccount extends SliceRedux {
             if (state.status === StatusType.LOADING) {
               state.status = StatusType.FAILED;
               state.error = action.payload;
+              console.timeEnd("slice - asyncCreateAccountThunk");
             }
           })
           .addCase(asyncUpdateAccountThunk.fulfilled, (state, action) => {
@@ -110,6 +112,7 @@ class SliceAccount extends SliceRedux {
               state.error = undefined;
               state.account = action.payload as Account;
               state.status = StatusType.IDLE;
+              console.timeEnd("slice - asyncUpdateAccountThunk");
             }
           })
           .addCase(asyncUpdateAccountThunk.pending, (state) => {
@@ -122,6 +125,7 @@ class SliceAccount extends SliceRedux {
             if (state.status === StatusType.LOADING) {
               state.status = StatusType.FAILED;
               state.error = action.payload;
+              console.timeEnd("slice - asyncUpdateAccountThunk");
             }
           });
       },
@@ -165,6 +169,7 @@ export const asyncGetAllAccountThunk = createAsyncThunk(
 export const asyncCreateAccountThunk = createAsyncThunk(
   "account/asyncCreateAccountThunk",
   async (account: Account, thunkAPI): Promise<Account | unknown> => {
+    console.time("slice - asyncCreateAccountThunk");
     try {
       const response = await AccountAPI.createAccountAPI(
         (thunkAPI.getState() as RootState).authState.user?.token,
@@ -185,6 +190,7 @@ export const asyncUpdateAccountThunk = createAsyncThunk(
     { _id, account }: { _id: number; account: Account },
     thunkAPI
   ): Promise<Account | unknown> => {
+    console.time("slice - asyncUpdateAccountThunk");
     try {
       const response = await AccountAPI.putAccountByIdAPI(
         (thunkAPI.getState() as RootState).authState.user?.token,
