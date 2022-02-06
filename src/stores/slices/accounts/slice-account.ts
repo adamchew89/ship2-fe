@@ -172,7 +172,7 @@ export const asyncUpdateAccountThunk = createAsyncThunk(
   "account/asyncUpdateAccountThunk",
   async (account: Account, thunkAPI): Promise<Account | unknown> => {
     try {
-      const response = await AccountAPI.patchAccountByIdAPI(
+      const response = await AccountAPI.putAccountByIdAPI(
         (thunkAPI.getState() as RootState).authState.user?.token,
         (thunkAPI.getState() as RootState).authState.user?._id,
         account

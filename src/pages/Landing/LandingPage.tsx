@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "z@Stores/utils/hooks";
 import { asyncGetAllAccountThunk } from "z@Stores/slices/accounts/slice-account";
 import * as ThemeValues from "z@Themes/theme";
 import { Account } from "z@Types/type-account";
+import React from "react";
 
 const uploads = [
   { _id: "0", uri: "https://picsum.photos/id/237/200/300" },
@@ -22,8 +23,12 @@ function LandingPage() {
   const { user } = useAppSelector((state) => state.authState);
   const { accounts } = useAppSelector((state) => state.accountState);
 
-  const refreshAccountsList = () => {
+  const refreshAccountsList = React.useCallback(() => {
     dispatch(asyncGetAllAccountThunk());
+  }, [dispatch]);
+
+  const onLoginHandler = () => {
+    navigate("/login");
   };
 
   const onEditAccountHandler = (id: number) => {
@@ -33,6 +38,10 @@ function LandingPage() {
   const onCreateAccountHandler = () => {
     navigate("/accounts/new");
   };
+
+  React.useEffect(() => {
+    refreshAccountsList();
+  }, [refreshAccountsList]);
 
   return (
     <Box
@@ -143,7 +152,11 @@ function LandingPage() {
         <Typography variant="h1" textAlign="center">
           Accounts List
         </Typography>
-        {!user && <Button>Please login to view accounts list</Button>}
+        {!user && (
+          <Button onClick={onLoginHandler}>
+            Please login to view accounts list
+          </Button>
+        )}
         {accounts &&
           accounts.map((account: Account) => (
             <Button

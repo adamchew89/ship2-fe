@@ -172,7 +172,7 @@ describe("[SliceAccount]", () => {
 
         beforeEach(() => {
           mockGetAccountsAPI = jest
-            .spyOn(AccountAPI, "patchAccountByIdAPI")
+            .spyOn(AccountAPI, "putAccountByIdAPI")
             .mockImplementation((token: string, id: number, account: Account) =>
               Promise.resolve({
                 data: {

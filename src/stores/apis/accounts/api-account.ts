@@ -32,17 +32,13 @@ export const createAccountAPI = async (
     },
   });
 
-export const patchAccountByIdAPI = async (
+export const putAccountByIdAPI = async (
   token: string,
   id: number,
   account: Account
 ): Promise<ResponseAPI<Account>> =>
-  await axios.patch(
-    `${process.env.REACT_APP_BASE_URL}/accounts/${id}`,
-    account,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  await axios.put(`${process.env.REACT_APP_BASE_URL}/accounts/${id}`, account, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

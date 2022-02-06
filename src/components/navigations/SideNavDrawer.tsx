@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import PlaceHolderImage1 from "z@Assets/images/placeholder-image1.jpeg";
 import { action as ActionAuth } from "z@Stores/slices/auths/slice-auth";
+import { action as ActionAccount } from "z@Stores/slices/auths/slice-auth";
 import { useAppSelector, useAppDispatch } from "z@Stores/utils/hooks";
 import Theme, * as ThemeValues from "z@Themes/theme";
 
@@ -28,6 +29,7 @@ function SideNavDrawer() {
 
   const logoutClickHander = () => {
     dispatch(ActionAuth.logout(undefined));
+    dispatch(ActionAccount.clearAccounts(undefined));
     navigate("/");
   };
 

@@ -109,6 +109,13 @@ describe("[AccountDetailsPage]", () => {
       );
       render(<AccountDetailsPage />);
       const submitBtn = screen.getByTestId("SubmitBtn");
+      expect(submitBtn).toBeDisabled();
+      const inputs = screen.getAllByRole("input");
+      inputs.forEach((input) => {
+        UserEvent.click(input);
+        UserEvent.type(input, "ABC");
+      });
+      expect(submitBtn).toBeEnabled();
       expect(mockNavigate).toHaveBeenCalledTimes(0);
       await UserEvent.click(submitBtn);
       expect(mockNavigate).toHaveBeenCalledTimes(1);

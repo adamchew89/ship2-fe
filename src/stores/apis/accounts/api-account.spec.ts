@@ -4,16 +4,16 @@ import * as APIAccount from "./api-account";
 
 jest.mock("axios", () => ({
   get: jest.fn(),
-  patch: jest.fn(),
+  put: jest.fn(),
 }));
 
 describe("[APIAccount]", () => {
   let mockAxiosGet: jest.SpyInstance;
-  let mockAxiosPatch: jest.SpyInstance;
+  let mockAxiosPut: jest.SpyInstance;
 
   beforeEach(() => {
     mockAxiosGet = jest.spyOn(axios, "get");
-    mockAxiosPatch = jest.spyOn(axios, "patch");
+    mockAxiosPut = jest.spyOn(axios, "put");
   });
 
   afterEach(() => {
@@ -61,16 +61,16 @@ describe("[APIAccount]", () => {
     });
   });
 
-  describe("[patchAccountByIdAPI]", () => {
+  describe("[putAccountByIdAPI]", () => {
     it("should trigger axios.get with /accounts/:id endpoint", async () => {
       expect(mockAxiosGet).toHaveBeenCalledTimes(0);
-      await APIAccount.patchAccountByIdAPI(
+      await APIAccount.putAccountByIdAPI(
         FixtureAccounts.accounts[0].token!,
         FixtureAccounts.accounts[0]._id!,
         FixtureAccounts.accounts[0]
       );
-      expect(mockAxiosPatch).toHaveBeenCalledTimes(1);
-      expect(mockAxiosPatch).toHaveBeenCalledWith(
+      expect(mockAxiosPut).toHaveBeenCalledTimes(1);
+      expect(mockAxiosPut).toHaveBeenCalledWith(
         expect.stringMatching(/\/accounts\/[a-zA-Z1-9]{1,}$/),
         FixtureAccounts.accounts[0],
         { headers: { Authorization: "Bearer token" } }

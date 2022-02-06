@@ -196,6 +196,7 @@ function AccountDetailsPage() {
           onClick={formSubmitHandler}
           sx={{ height: "3rem", margin: "2.5rem 1.5rem" }}
           ref={submitBtnRef}
+          disabled={!form.isValid}
         >
           SUBMIT
         </Button>
